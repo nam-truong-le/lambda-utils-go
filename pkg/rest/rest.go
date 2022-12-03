@@ -6,10 +6,11 @@ import (
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/google/uuid"
-	commoncontext "github.com/nam-truong-le/lambda-utils-go/pkg/context"
+	mycontext "github.com/nam-truong-le/lambda-utils-go/pkg/context"
 	"github.com/nam-truong-le/lambda-utils-go/pkg/logger"
 )
 
+// Response returns response with json body
 func Response(ctx context.Context, status int, request *events.APIGatewayProxyRequest, body interface{}) *events.APIGatewayProxyResponse {
 	log := logger.FromContext(ctx)
 	log.Infof("http response: [%d] %+v", status, body)
@@ -27,6 +28,7 @@ func Response(ctx context.Context, status int, request *events.APIGatewayProxyRe
 	}
 }
 
+// ResponseRaw returns response with string body
 func ResponseRaw(ctx context.Context, status int, body string) *events.APIGatewayProxyResponse {
 	log := logger.FromContext(ctx)
 	log.Infof("http response: [%d] %+v", status, body)
@@ -48,6 +50,7 @@ type ErrorBody struct {
 	RequestTime string `json:"requestTime"`
 }
 
+// ResponseError returns error response
 func ResponseError(ctx context.Context, status int, request *events.APIGatewayProxyRequest, err error) *events.APIGatewayProxyResponse {
 	log := logger.FromContext(ctx)
 	log.Infof("http error response: [%d] %+v", status, err)
@@ -82,14 +85,11 @@ func ResponseError(ctx context.Context, status int, request *events.APIGatewayPr
 // AddToContext adds request data to context
 func AddToContext(ctx context.Context, request *events.APIGatewayProxyRequest) context.Context {
 	stage := request.RequestContext.Stage
-	result := context.WithValue(ctx, commoncontext.FieldStage, stage)
+	result := context.WithValue(ctx, mycontext.FieldStage, stage)
 	correlationID, ok := request.Headers["X-Correlation-Id"]
 	if !ok {
 		correlationID = uuid.New().String()
 	}
-	result = context.WithValue(result, commoncontext.FieldCorrelationID, correlationID)
-	result = context.WithValue(result, commoncontext.FieldRequestID, request.RequestContext.RequestID)
-	result = context.WithValue(result, commoncontext.FieldRequestPath, request.Path)
-	result = context.WithValue(result, commoncontext.FieldRequestMethod, request.HTTPMethod)
+	result = context.WithValue(result, mycontext.FieldCorrelationID, correlationID)
 	return result
 }
