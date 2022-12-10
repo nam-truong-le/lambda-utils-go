@@ -5,16 +5,16 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/nam-truong-le/lambda-utils-go/pkg/aws/ssm"
-	"github.com/nam-truong-le/lambda-utils-go/pkg/logger"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
+
+	"github.com/nam-truong-le/lambda-utils-go/pkg/aws/ssm"
+	"github.com/nam-truong-le/lambda-utils-go/pkg/logger"
 )
 
 var (
 	initClient sync.Once
 	client     *mongo.Client
-	database   string
 )
 
 // newClient returns mongo client. Stage must be in context.
@@ -22,7 +22,7 @@ func newClient(ctx context.Context) (*mongo.Client, error) {
 	log := logger.FromContext(ctx)
 
 	initClient.Do(func() {
-		log.Infof("init mongodb client")
+		log.Infof("Init mongodb client")
 		mongoHost, err := ssm.GetParameter(ctx, "/mongo/host", false)
 		if err != nil {
 			return
@@ -35,11 +35,7 @@ func newClient(ctx context.Context) (*mongo.Client, error) {
 		if err != nil {
 			return
 		}
-		database, err = ssm.GetParameter(ctx, "/mongo/db", false)
-		if err != nil {
-			return
-		}
-		log.Infof("host = %s, user = %s, db = %s", mongoHost, mongoUsername, database)
+		log.Infof("Database parameters: host = [%s], user = [%s]", mongoHost, mongoUsername)
 		mongoFullUrl := fmt.Sprintf("mongodb+srv://%s/?retryWrites=true&w=majority", mongoHost)
 
 		c, err := mongo.NewClient(
@@ -49,12 +45,12 @@ func newClient(ctx context.Context) (*mongo.Client, error) {
 			}),
 		)
 		if err != nil {
-			log.Errorf("failed to create mongodb client: %s", err)
+			log.Errorf("Failed to create mongodb client: %s", err)
 			return
 		}
 		err = c.Connect(ctx)
 		if err != nil {
-			log.Errorf("failed to connect to mongodb: %s", err)
+			log.Errorf("Failed to connect to mongodb: %s", err)
 			return
 		}
 
@@ -68,9 +64,9 @@ func newClient(ctx context.Context) (*mongo.Client, error) {
 }
 
 // Collection returns collection. Stage must be in context.
-func Collection(ctx context.Context, name string) (*mongo.Collection, error) {
+func Collection(ctx context.Context, database string, name string) (*mongo.Collection, error) {
 	log := logger.FromContext(ctx)
-	log.Infof("get collection [%s]", name)
+	log.Infof("Get collection [%s]", name)
 	c, err := newClient(ctx)
 	if err != nil {
 		return nil, err
@@ -84,9 +80,9 @@ func Disconnect(ctx context.Context) {
 	if client != nil {
 		err := client.Disconnect(ctx)
 		if err != nil {
-			log.Errorf("failed to disconnect mongodb client: %s", err)
+			log.Errorf("Failed to disconnect mongodb client: %s", err)
 		} else {
-			log.Infof("mongodb client disconnected")
+			log.Infof("Mongodb client disconnected")
 			client = nil
 			initClient = sync.Once{}
 		}
