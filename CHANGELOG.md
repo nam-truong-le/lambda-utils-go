@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.7] - 2022-12-11
+### Fixed
+- SSM: GetAppParameters - pagination - missing break
+
 ## [1.4.6] - 2022-12-11
 ### Fixed
 - SSM: GetAppParameters - pagination
