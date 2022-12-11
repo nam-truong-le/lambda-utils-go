@@ -46,23 +46,24 @@ func GetAppParameters(ctx context.Context) ([]types.Parameter, error) {
 	var nextToken *string
 	for true {
 		log.Infof("Get chunk")
-		get, err := ssmClient.GetParametersByPath(ctx, &ssm.GetParametersByPathInput{
+		chunk, err := ssmClient.GetParametersByPath(ctx, &ssm.GetParametersByPathInput{
 			Path:           aws.String(fmt.Sprintf("/%s/%s", app, stage)),
 			WithDecryption: aws.Bool(true),
 			NextToken:      nextToken,
+			Recursive:      aws.Bool(true),
 		})
 		if err != nil {
 			return nil, err
 		}
 
-		if len(get.Parameters) == 0 {
-			log.Infof("Chunk is empty, break")
+		log.Infof("Append %d parameters to result", len(chunk.Parameters))
+		res = append(res, chunk.Parameters...)
+
+		if chunk.NextToken == nil {
+			log.Infof("Next token is nil, break")
 			break
 		}
-
-		log.Infof("Append %d parameters to result", len(get.Parameters))
-		res = append(res, get.Parameters...)
-		nextToken = get.NextToken
+		nextToken = chunk.NextToken
 	}
 
 	return res, nil
