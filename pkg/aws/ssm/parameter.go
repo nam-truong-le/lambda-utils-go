@@ -25,6 +25,8 @@ var (
 )
 
 func GetAppParameters(ctx context.Context) ([]types.Parameter, error) {
+	log := logger.FromContext(ctx)
+
 	app, ok := os.LookupEnv("APP")
 	if !ok {
 		return nil, fmt.Errorf("missing env variable APP")
@@ -33,20 +35,35 @@ func GetAppParameters(ctx context.Context) ([]types.Parameter, error) {
 	if !ok {
 		return nil, fmt.Errorf("missing stage in context")
 	}
+	log.Infof("Get all SSM parameters for [/%s/%s]", app, stage)
+
 	ssmClient, err := newClient(ctx)
 	if err != nil {
 		return nil, err
 	}
 
-	get, err := ssmClient.GetParametersByPath(ctx, &ssm.GetParametersByPathInput{
-		Path:           aws.String(fmt.Sprintf("/%s/%s", app, stage)),
-		MaxResults:     aws.Int32(1000),
-		WithDecryption: aws.Bool(true),
-	})
-	if err != nil {
-		return nil, err
+	res := make([]types.Parameter, 0)
+	var nextToken *string
+	for true {
+		log.Infof("Get chunk")
+		get, err := ssmClient.GetParametersByPath(ctx, &ssm.GetParametersByPathInput{
+			Path:           aws.String(fmt.Sprintf("/%s/%s", app, stage)),
+			WithDecryption: aws.Bool(true),
+			NextToken:      nextToken,
+		})
+		if err != nil {
+			return nil, err
+		}
+
+		if len(get.Parameters) == 0 {
+			log.Infof("Chunk is empty, break")
+		}
+
+		res = append(res, get.Parameters...)
+		nextToken = get.NextToken
 	}
-	return get.Parameters, nil
+
+	return res, nil
 }
 
 // GetParameter returns ssm parameter. Stage must be in context.
