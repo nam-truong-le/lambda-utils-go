@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.1] - 2022-12-11
+### Changed
+- Keep log fields uniq
+
 ## [1.4.0] - 2022-12-10
 ### Added
 - Support multiple mongodb database
