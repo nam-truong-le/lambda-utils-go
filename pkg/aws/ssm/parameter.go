@@ -7,9 +7,11 @@ import (
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/ssm"
+	"github.com/aws/aws-sdk-go-v2/service/ssm/types"
+	"github.com/pkg/errors"
+
 	mycontext "github.com/nam-truong-le/lambda-utils-go/pkg/context"
 	"github.com/nam-truong-le/lambda-utils-go/pkg/logger"
-	"github.com/pkg/errors"
 )
 
 type cacheKey struct {
@@ -21,6 +23,31 @@ type cacheKey struct {
 var (
 	cache = make(map[cacheKey]string, 0)
 )
+
+func GetAppParameters(ctx context.Context) ([]types.Parameter, error) {
+	app, ok := os.LookupEnv("APP")
+	if !ok {
+		return nil, fmt.Errorf("missing env variable APP")
+	}
+	stage, ok := ctx.Value(mycontext.FieldStage).(string)
+	if !ok {
+		return nil, fmt.Errorf("missing stage in context")
+	}
+	ssmClient, err := newClient(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	get, err := ssmClient.GetParametersByPath(ctx, &ssm.GetParametersByPathInput{
+		Path:           aws.String(fmt.Sprintf("/%s/%s", app, stage)),
+		MaxResults:     aws.Int32(1000),
+		WithDecryption: aws.Bool(true),
+	})
+	if err != nil {
+		return nil, err
+	}
+	return get.Parameters, nil
+}
 
 // GetParameter returns ssm parameter. Stage must be in context.
 func GetParameter(ctx context.Context, name string, decryption bool) (string, error) {
