@@ -4,8 +4,10 @@ import (
 	"context"
 	"sync"
 
-	mycontext "github.com/nam-truong-le/lambda-utils-go/pkg/context"
+	"github.com/samber/lo"
 	"github.com/sirupsen/logrus"
+
+	mycontext "github.com/nam-truong-le/lambda-utils-go/pkg/context"
 )
 
 var (
@@ -24,7 +26,7 @@ func getLogger() *logrus.Logger {
 
 // AddFields adds field to log statement
 func AddFields(fields ...string) {
-	logFields = append(logFields, fields...)
+	logFields = lo.Union(logFields, fields)
 }
 
 // FromContext returns logger for this context
