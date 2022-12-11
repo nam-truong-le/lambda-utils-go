@@ -57,8 +57,10 @@ func GetAppParameters(ctx context.Context) ([]types.Parameter, error) {
 
 		if len(get.Parameters) == 0 {
 			log.Infof("Chunk is empty, break")
+			break
 		}
 
+		log.Infof("Append %d parameters to result", len(get.Parameters))
 		res = append(res, get.Parameters...)
 		nextToken = get.NextToken
 	}
