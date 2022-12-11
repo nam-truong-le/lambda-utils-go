@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.3] - 2022-12-11
+### Added
+- Package retry
+
 ## [1.4.2] - 2022-12-11
 ### Added
 - Mongodb JSON patch mapping
