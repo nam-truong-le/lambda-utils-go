@@ -8,11 +8,13 @@ require (
 	github.com/aws/aws-sdk-go-v2/config v1.18.4
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.29.5
 	github.com/aws/aws-sdk-go-v2/service/ssm v1.33.2
+	github.com/aws/aws-sdk-go-v2/service/textract v1.19.1
 	github.com/google/uuid v1.3.0
 	github.com/pkg/errors v0.9.1
 	github.com/samber/lo v1.36.0
 	github.com/sirupsen/logrus v1.9.0
 	github.com/stretchr/testify v1.8.0
+	github.com/vietnam-immigrations/go-utils/v2 v2.5.0
 	go.mongodb.org/mongo-driver v1.11.1
 )
 
