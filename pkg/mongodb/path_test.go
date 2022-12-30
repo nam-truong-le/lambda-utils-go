@@ -30,21 +30,15 @@ func TestUpdateFromPatch(t *testing.T) {
 		},
 	}, nil)
 	assert.NoError(t, err)
-	assert.Equal(t, bson.A{
-		bson.M{
-			"$set": bson.M{
-				"a.b.c": "anything",
-			},
+	assert.Equal(t, bson.D{
+		{
+			"$set", bson.D{{"a.b.c", "anything"}},
 		},
-		bson.M{
-			"$set": bson.M{
-				"a.1.b": true,
-			},
+		{
+			"$set", bson.D{{"a.1.b", true}},
 		},
-		bson.M{
-			"$set": bson.M{
-				"c": 1234,
-			},
+		{
+			"$set", bson.D{{"c", 1234}},
 		},
 	}, update)
 }
@@ -87,31 +81,21 @@ func TestMongoUpdateFromJSONPatch(t *testing.T) {
 	update, err := mongodb.UpdateFromPatch(patches, objectIDPaths)
 
 	assert.NoError(t, err)
-	assert.Equal(t, bson.A{
-		bson.M{
-			"$set": bson.M{
-				"a.b.c": "string",
-			},
+	assert.Equal(t, bson.D{
+		{
+			"$set", bson.D{{"a.b.c", "string"}},
 		},
-		bson.M{
-			"$set": bson.M{
-				"a.b.d": 1234,
-			},
+		{
+			"$set", bson.D{{"a.b.d", 1234}},
 		},
-		bson.M{
-			"$set": bson.M{
-				"a.c.e": true,
-			},
+		{
+			"$set", bson.D{{"a.c.e", true}},
 		},
-		bson.M{
-			"$set": bson.M{
-				"objectId1.a": objectID1,
-			},
+		{
+			"$set", bson.D{{"objectId1.a", objectID1}},
 		},
-		bson.M{
-			"$set": bson.M{
-				"objectId1.array": []primitive.ObjectID{objectID2, objectID3},
-			},
+		{
+			"$set", bson.D{{"objectId1.array", []primitive.ObjectID{objectID2, objectID3}}},
 		},
 	}, update)
 }
