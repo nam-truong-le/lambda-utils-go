@@ -14,7 +14,7 @@ import (
 
 // UpdateFromPatch convert JSON Patch to mongodb update object
 func UpdateFromPatch(req rest.PatchRequest, objIDPaths []string) (interface{}, error) {
-	update := bson.A{}
+	update := bson.D{}
 	for _, patch := range req {
 		if patch.OP != "replace" {
 			return nil, fmt.Errorf("JSON patch operation [%s] not supported", patch.OP)
@@ -50,11 +50,7 @@ func UpdateFromPatch(req rest.PatchRequest, objIDPaths []string) (interface{}, e
 			}
 		}
 
-		update = append(update, bson.M{
-			"$set": bson.M{
-				key: val,
-			},
-		})
+		update = append(update, bson.E{Key: "$set", Value: bson.D{{key, val}}})
 	}
 	if len(update) == 0 {
 		return nil, fmt.Errorf("empty update")
