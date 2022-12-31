@@ -2,6 +2,7 @@ package logger
 
 import (
 	"context"
+	"os"
 	"sync"
 
 	"github.com/samber/lo"
@@ -19,7 +20,13 @@ var (
 func getLogger() *logrus.Logger {
 	initLogger.Do(func() {
 		logger = logrus.New()
-		logger.SetFormatter(&logrus.JSONFormatter{})
+		if os.Getenv("LUG_LOCAL") != "true" {
+			logger.SetFormatter(&logrus.JSONFormatter{})
+		} else {
+			logger.SetFormatter(&logrus.TextFormatter{
+				DisableTimestamp: true,
+			})
+		}
 	})
 	return logger
 }
