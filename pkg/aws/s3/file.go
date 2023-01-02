@@ -7,6 +7,7 @@ import (
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
+	"github.com/samber/lo"
 
 	"github.com/nam-truong-le/lambda-utils-go/pkg/aws/ssm"
 	"github.com/nam-truong-le/lambda-utils-go/pkg/logger"
@@ -84,4 +85,37 @@ func WriteFile(ctx context.Context, bucket, key string, file []byte) error {
 		return err
 	}
 	return nil
+}
+
+func PublicURLSSMBucket(ctx context.Context, bucketSSM, key string) (*string, error) {
+	log := logger.FromContext(ctx)
+	log.Infof("Generate public URL for S3 file [ssm:%s] [%s]", bucketSSM, key)
+
+	bucket, err := ssm.GetParameter(ctx, bucketSSM, false)
+	if err != nil {
+		log.Errorf("Failed to get bucket name from SSM [%s]: %s", bucketSSM, err)
+		return nil, err
+	}
+
+	return PublicURL(ctx, bucket, key)
+}
+
+func PublicURL(ctx context.Context, bucket, key string) (*string, error) {
+	log := logger.FromContext(ctx)
+	log.Infof("Generate public URL for s3 file [%s] [%s]", bucket, key)
+
+	c, err := NewPreSignClient(ctx)
+	if err != nil {
+		return nil, err
+	}
+	res, err := c.PresignGetObject(ctx, &s3.GetObjectInput{
+		Bucket: aws.String(bucket),
+		Key:    aws.String(key),
+	})
+	if err != nil {
+		log.Errorf("Failed to generate public URL for S3 file [%s] [%s]: %s", bucket, key, err)
+		return nil, err
+	}
+
+	return lo.ToPtr(res.URL), nil
 }
