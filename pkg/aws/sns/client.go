@@ -7,7 +7,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/sns"
 
-	"github.com/nam-truong-le/lambda-utils-go/pkg/logger"
+	"github.com/nam-truong-le/lambda-utils-go/v2/pkg/logger"
 )
 
 var (

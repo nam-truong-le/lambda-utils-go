@@ -5,7 +5,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/nam-truong-le/lambda-utils-go/pkg/logger"
+	"github.com/nam-truong-le/lambda-utils-go/v2/pkg/logger"
 )
 
 func Test_JSON(t *testing.T) {

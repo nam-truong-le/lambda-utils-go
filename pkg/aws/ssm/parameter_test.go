@@ -7,8 +7,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/nam-truong-le/lambda-utils-go/pkg/aws/ssm"
-	mycontext "github.com/nam-truong-le/lambda-utils-go/pkg/context"
+	"github.com/nam-truong-le/lambda-utils-go/v2/pkg/aws/ssm"
+	mycontext "github.com/nam-truong-le/lambda-utils-go/v2/pkg/context"
 )
 
 func TestGetAppParameters(t *testing.T) {

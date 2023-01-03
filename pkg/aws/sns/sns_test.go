@@ -6,7 +6,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/nam-truong-le/lambda-utils-go/pkg/aws/sns"
+	"github.com/nam-truong-le/lambda-utils-go/v2/pkg/aws/sns"
 )
 
 func TestGetSNSStringAttribute_Success(t *testing.T) {

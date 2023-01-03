@@ -8,7 +8,7 @@ import (
 	"github.com/samber/lo"
 	"github.com/sirupsen/logrus"
 
-	mycontext "github.com/nam-truong-le/lambda-utils-go/pkg/context"
+	mycontext "github.com/nam-truong-le/lambda-utils-go/v2/pkg/context"
 )
 
 var (

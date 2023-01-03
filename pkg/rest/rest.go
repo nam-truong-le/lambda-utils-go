@@ -6,8 +6,9 @@ import (
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/google/uuid"
-	mycontext "github.com/nam-truong-le/lambda-utils-go/pkg/context"
-	"github.com/nam-truong-le/lambda-utils-go/pkg/logger"
+
+	mycontext "github.com/nam-truong-le/lambda-utils-go/v2/pkg/context"
+	"github.com/nam-truong-le/lambda-utils-go/v2/pkg/logger"
 )
 
 // Response returns response with json body
