@@ -7,8 +7,8 @@ import (
 	"github.com/pkg/errors"
 	"github.com/pusher/pusher-http-go/v5"
 
-	"github.com/nam-truong-le/lambda-utils-go/pkg/aws/ssm"
-	"github.com/nam-truong-le/lambda-utils-go/pkg/logger"
+	"github.com/nam-truong-le/lambda-utils-go/v2/pkg/aws/ssm"
+	"github.com/nam-truong-le/lambda-utils-go/v2/pkg/logger"
 )
 
 const (

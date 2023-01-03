@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/nam-truong-le/lambda-utils-go/pkg/logger"
+	"github.com/nam-truong-le/lambda-utils-go/v2/pkg/logger"
 )
 
 func GetSNSStringAttribute(ctx context.Context, attribute interface{}) (string, error) {

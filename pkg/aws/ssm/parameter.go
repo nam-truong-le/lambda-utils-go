@@ -10,8 +10,8 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/ssm/types"
 	"github.com/pkg/errors"
 
-	mycontext "github.com/nam-truong-le/lambda-utils-go/pkg/context"
-	"github.com/nam-truong-le/lambda-utils-go/pkg/logger"
+	mycontext "github.com/nam-truong-le/lambda-utils-go/v2/pkg/context"
+	"github.com/nam-truong-le/lambda-utils-go/v2/pkg/logger"
 )
 
 type cacheKey struct {

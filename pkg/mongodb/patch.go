@@ -9,7 +9,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 
-	"github.com/nam-truong-le/lambda-utils-go/pkg/rest"
+	"github.com/nam-truong-le/lambda-utils-go/v2/pkg/rest"
 )
 
 // UpdateFromPatch convert JSON Patch to mongodb update object

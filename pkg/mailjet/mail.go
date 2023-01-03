@@ -8,10 +8,10 @@ import (
 
 	"github.com/mailjet/mailjet-apiv3-go/v4"
 	"github.com/pkg/errors"
+	"github.com/samber/lo"
 
-	"github.com/nam-truong-le/lambda-utils-go/pkg/aws/ssm"
-	"github.com/nam-truong-le/lambda-utils-go/pkg/logger"
-	"github.com/nam-truong-le/lambda-utils-go/pkg/retry"
+	"github.com/nam-truong-le/lambda-utils-go/v2/pkg/aws/ssm"
+	"github.com/nam-truong-le/lambda-utils-go/v2/pkg/logger"
 )
 
 // Send sends email
@@ -34,7 +34,8 @@ func Send(ctx context.Context, m mailjet.InfoMessagesV31) error {
 		Info: []mailjet.InfoMessagesV31{m},
 	}
 
-	return retry.Do(ctx, func() error {
+	t, d, err := lo.AttemptWithDelay(3, 100*time.Millisecond, func(index int, duration time.Duration) error {
+		log.Infof("#%d try to send email", index+1)
 		res, err := client.SendMailV31(&messages)
 		if err != nil {
 			log.Errorf("failed to send email [%s]: %s", m.Subject, err)
@@ -47,5 +48,10 @@ func Send(ctx context.Context, m mailjet.InfoMessagesV31) error {
 		}
 		log.Infof("email [%s] sent to [%+v]", m.Subject, m.To)
 		return nil
-	}, 3, 100*time.Millisecond)
+	})
+	if err != nil {
+		return err
+	}
+	log.Infof("Succeeded after [%d] retries: [%d ms]", t, d.Milliseconds())
+	return nil
 }

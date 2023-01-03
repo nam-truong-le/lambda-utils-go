@@ -7,7 +7,7 @@ import (
 	"github.com/samber/lo"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/nam-truong-le/lambda-utils-go/pkg/random"
+	"github.com/nam-truong-le/lambda-utils-go/v2/pkg/random"
 )
 
 func TestRandomString1(t *testing.T) {
