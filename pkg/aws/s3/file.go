@@ -7,6 +7,7 @@ import (
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
+	"github.com/aws/aws-sdk-go-v2/service/s3/types"
 	"github.com/samber/lo"
 
 	"github.com/nam-truong-le/lambda-utils-go/v2/pkg/aws/ssm"
@@ -67,7 +68,33 @@ func WriteFileBucketSSM(ctx context.Context, bucketSSM, key string, file []byte)
 	return WriteFile(ctx, bucket, key, file)
 }
 
+func WritePublicFileBucketSSM(ctx context.Context, bucketSSM, key string, file []byte) error {
+	log := logger.FromContext(ctx)
+	log.Infof("Write public s3 file [ssm:%s] [%s]", bucketSSM, key)
+
+	bucket, err := ssm.GetParameter(ctx, bucketSSM, false)
+	if err != nil {
+		log.Errorf("Failed to get bucket name from SSM [%s]: %s", bucketSSM, err)
+		return err
+	}
+	return WritePublicFile(ctx, bucket, key, file)
+}
+
 func WriteFile(ctx context.Context, bucket, key string, file []byte) error {
+	log := logger.FromContext(ctx)
+	log.Infof("Write s3 file [%s] [%s]", bucket, key)
+
+	return writeFile(ctx, bucket, key, file, nil)
+}
+
+func WritePublicFile(ctx context.Context, bucket, key string, file []byte) error {
+	log := logger.FromContext(ctx)
+	log.Infof("Write public s3 file [%s] [%s]", bucket, key)
+
+	return writeFile(ctx, bucket, key, file, lo.ToPtr(types.ObjectCannedACLPublicRead))
+}
+
+func writeFile(ctx context.Context, bucket, key string, file []byte, acl *types.ObjectCannedACL) error {
 	log := logger.FromContext(ctx)
 	log.Infof("Write s3 file [%s] [%s]", bucket, key)
 
@@ -75,11 +102,15 @@ func WriteFile(ctx context.Context, bucket, key string, file []byte) error {
 	if err != nil {
 		return err
 	}
-	_, err = c.PutObject(ctx, &s3.PutObjectInput{
+	params := &s3.PutObjectInput{
 		Bucket: aws.String(bucket),
 		Key:    aws.String(key),
 		Body:   bytes.NewReader(file),
-	})
+	}
+	if acl != nil {
+		params.ACL = *acl
+	}
+	_, err = c.PutObject(ctx, params)
 	if err != nil {
 		log.Errorf("Faile to write s3 file [%s] [%s]: %s", bucket, key, err)
 		return err
