@@ -6,8 +6,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	mycontext "github.com/nam-truong-le/lambda-utils-go/v2/pkg/context"
-	"github.com/nam-truong-le/lambda-utils-go/v2/pkg/pusher"
+	mycontext "github.com/nam-truong-le/lambda-utils-go/v3/pkg/context"
+	"github.com/nam-truong-le/lambda-utils-go/v3/pkg/pusher"
 )
 
 func TestNewClient(t *testing.T) {

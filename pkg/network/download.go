@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/nam-truong-le/lambda-utils-go/v2/pkg/logger"
+	"github.com/nam-truong-le/lambda-utils-go/v3/pkg/logger"
 )
 
 // DownloadFileWithTimeout download file with a specific timeout
