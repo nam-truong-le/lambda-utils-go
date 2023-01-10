@@ -6,7 +6,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 
-	"github.com/nam-truong-le/lambda-utils-go/v2/pkg/logger"
+	"github.com/nam-truong-le/lambda-utils-go/v3/pkg/logger"
 )
 
 func NewClientForRegion(ctx context.Context, region string) (*s3.Client, error) {

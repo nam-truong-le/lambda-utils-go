@@ -1,4 +1,4 @@
-module github.com/nam-truong-le/lambda-utils-go/v2
+module github.com/nam-truong-le/lambda-utils-go/v3
 
 go 1.19
 

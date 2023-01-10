@@ -8,8 +8,8 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 
-	"github.com/nam-truong-le/lambda-utils-go/v2/pkg/aws/ssm"
-	"github.com/nam-truong-le/lambda-utils-go/v2/pkg/logger"
+	"github.com/nam-truong-le/lambda-utils-go/v3/pkg/aws/ssm"
+	"github.com/nam-truong-le/lambda-utils-go/v3/pkg/logger"
 )
 
 var (

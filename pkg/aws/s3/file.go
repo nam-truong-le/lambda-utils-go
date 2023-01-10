@@ -10,8 +10,8 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/s3/types"
 	"github.com/samber/lo"
 
-	"github.com/nam-truong-le/lambda-utils-go/v2/pkg/aws/ssm"
-	"github.com/nam-truong-le/lambda-utils-go/v2/pkg/logger"
+	"github.com/nam-truong-le/lambda-utils-go/v3/pkg/aws/ssm"
+	"github.com/nam-truong-le/lambda-utils-go/v3/pkg/logger"
 )
 
 func ReadFileBucketSSM(ctx context.Context, bucketSSM, key string) ([]byte, error) {
