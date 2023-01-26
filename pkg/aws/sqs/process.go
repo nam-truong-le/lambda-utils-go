@@ -20,6 +20,7 @@ type ProcessOptions struct {
 	CleanUp CleanUpFunction
 }
 
+// Process TODO: how to add correlation ID to context?
 func Process(ctx context.Context, e *events.SQSEvent, opts ProcessOptions) (*events.SQSEventResponse, error) {
 	stage, ok := os.LookupEnv("ENV")
 	if !ok {
