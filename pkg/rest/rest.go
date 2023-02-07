@@ -3,9 +3,11 @@ package rest
 import (
 	"context"
 	"encoding/json"
+	"strings"
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/google/uuid"
+	"github.com/samber/lo"
 
 	mycontext "github.com/nam-truong-le/lambda-utils-go/v3/pkg/context"
 	"github.com/nam-truong-le/lambda-utils-go/v3/pkg/logger"
@@ -93,4 +95,19 @@ func AddToContext(ctx context.Context, request *events.APIGatewayProxyRequest) c
 	}
 	result = context.WithValue(result, mycontext.FieldCorrelationID, correlationID)
 	return result
+}
+
+// GetHeader returns header with case-insensitive check
+func GetHeader(ctx context.Context, request *events.APIGatewayProxyRequest, name string) (*string, bool) {
+	log := logger.FromContext(ctx)
+	log.Infof("Read header [%s]", name)
+	keyFound, ok := lo.FindKeyBy(request.Headers, func(key string, _ string) bool {
+		return strings.EqualFold(key, name)
+	})
+	if !ok {
+		log.Errorf("Header [%s] not found in: %+v", name, request.Headers)
+		return nil, false
+	}
+	log.Infof("Header name [%s] found", name)
+	return lo.ToPtr(request.Headers[keyFound]), true
 }
