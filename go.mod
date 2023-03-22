@@ -10,7 +10,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/sns v1.20.6
 	github.com/aws/aws-sdk-go-v2/service/sqs v1.20.5
 	github.com/aws/aws-sdk-go-v2/service/ssm v1.35.6
-	github.com/aws/aws-sdk-go-v2/service/textract v1.20.5
+	github.com/aws/aws-sdk-go-v2/service/textract v1.20.6
 	github.com/google/uuid v1.3.0
 	github.com/mailjet/mailjet-apiv3-go/v4 v4.0.1
 	github.com/pkg/errors v0.9.1
