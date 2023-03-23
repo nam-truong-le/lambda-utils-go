@@ -9,7 +9,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.31.0
 	github.com/aws/aws-sdk-go-v2/service/sns v1.20.6
 	github.com/aws/aws-sdk-go-v2/service/sqs v1.20.6
-	github.com/aws/aws-sdk-go-v2/service/ssm v1.35.7
+	github.com/aws/aws-sdk-go-v2/service/ssm v1.36.0
 	github.com/aws/aws-sdk-go-v2/service/textract v1.20.6
 	github.com/google/uuid v1.3.0
 	github.com/mailjet/mailjet-apiv3-go/v4 v4.0.1
