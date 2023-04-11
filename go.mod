@@ -7,7 +7,7 @@ require (
 	github.com/aws/aws-sdk-go-v2 v1.17.8
 	github.com/aws/aws-sdk-go-v2/config v1.18.20
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.31.3
-	github.com/aws/aws-sdk-go-v2/service/sns v1.20.7
+	github.com/aws/aws-sdk-go-v2/service/sns v1.20.8
 	github.com/aws/aws-sdk-go-v2/service/sqs v1.20.8
 	github.com/aws/aws-sdk-go-v2/service/ssm v1.36.1
 	github.com/aws/aws-sdk-go-v2/service/textract v1.21.1
