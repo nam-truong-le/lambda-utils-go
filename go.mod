@@ -17,7 +17,7 @@ require (
 	github.com/pusher/pusher-http-go/v5 v5.1.1
 	github.com/samber/lo v1.38.1
 	github.com/sirupsen/logrus v1.9.2
-	github.com/stretchr/testify v1.8.2
+	github.com/stretchr/testify v1.8.3
 	go.mongodb.org/mongo-driver v1.11.6
 )
 
