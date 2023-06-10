@@ -18,6 +18,7 @@ const (
 	headerTo        = "To"
 	headerReplyTo   = "Reply-To"
 	headerBCC       = "BCC"
+	headerCC        = "CC"
 	headerSubject   = "Subject"
 	contentTypeHTML = "text/html"
 )
@@ -32,6 +33,7 @@ type SendProps struct {
 	To          []string
 	ReplyTo     string
 	BCC         []string
+	CC          []string
 	Subject     string
 	HTML        string
 	Attachments []SendPropsAttachment
@@ -45,6 +47,7 @@ func Send(ctx context.Context, props SendProps) error {
 	msg.SetHeader(headerTo, props.To...)
 	msg.SetHeader(headerReplyTo, props.ReplyTo)
 	msg.SetHeader(headerBCC, props.BCC...)
+	msg.SetHeader(headerCC, props.CC...)
 	msg.SetHeader(headerSubject, props.Subject)
 	msg.SetBody(contentTypeHTML, props.HTML)
 	lo.ForEach(props.Attachments, func(a SendPropsAttachment, _ int) {
