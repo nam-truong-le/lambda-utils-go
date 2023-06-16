@@ -9,7 +9,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.34.1
 	github.com/aws/aws-sdk-go-v2/service/ses v1.15.11
 	github.com/aws/aws-sdk-go-v2/service/sns v1.20.13
-	github.com/aws/aws-sdk-go-v2/service/sqs v1.23.1
+	github.com/aws/aws-sdk-go-v2/service/sqs v1.23.2
 	github.com/aws/aws-sdk-go-v2/service/ssm v1.36.5
 	github.com/aws/aws-sdk-go-v2/service/textract v1.21.5
 	github.com/google/uuid v1.3.0
