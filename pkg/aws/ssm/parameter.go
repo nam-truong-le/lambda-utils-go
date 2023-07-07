@@ -74,12 +74,6 @@ func GetAppParameters(ctx context.Context) ([]types.Parameter, error) {
 func GetParameter(ctx context.Context, name string, decryption bool) (string, error) {
 	log := logger.FromContext(ctx)
 
-	directEnv, ok := os.LookupEnv(name)
-	if ok {
-		log.Infof("Parameter [%s] found in direct env", name)
-		return directEnv, nil
-	}
-
 	stage, ok := ctx.Value(mycontext.FieldStage).(string)
 	if !ok {
 		log.Errorf("Missing stage in context")

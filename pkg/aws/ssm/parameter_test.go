@@ -27,14 +27,6 @@ func TestGetAppParameters(t *testing.T) {
 	assert.NotZero(t, len(parameters))
 }
 
-func TestGetParameter_FromDirectEnv(t *testing.T) {
-	err := os.Setenv("/a/b/c", "test")
-	assert.NoError(t, err)
-	result, err := ssm.GetParameter(context.Background(), "/a/b/c", false)
-	assert.NoError(t, err)
-	assert.Equal(t, "test", result)
-}
-
 func TestGetParameter_FromEnv(t *testing.T) {
 	ctx := context.WithValue(context.Background(), mycontext.FieldStage, "dev")
 	params := map[string]any{
