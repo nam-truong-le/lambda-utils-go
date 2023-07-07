@@ -74,12 +74,6 @@ func GetAppParameters(ctx context.Context) ([]types.Parameter, error) {
 func GetParameter(ctx context.Context, name string, decryption bool) (string, error) {
 	log := logger.FromContext(ctx)
 
-	directEnv, ok := os.LookupEnv(name)
-	if ok {
-		log.Infof("Parameter [%s] found in direct env", name)
-		return directEnv, nil
-	}
-
 	stage, ok := ctx.Value(mycontext.FieldStage).(string)
 	if !ok {
 		log.Errorf("Missing stage in context")
@@ -113,6 +107,13 @@ func getParameterFromSSM(ctx context.Context, stage, name string, decryption boo
 
 	ssmKey := fmt.Sprintf("/%s/%s%s", app, stage, name)
 	log.Infof("get [%s] variable", ssmKey)
+
+	directEnv, ok := os.LookupEnv(ssmKey)
+	if ok {
+		log.Infof("Found [%s] in direct env", ssmKey)
+		return directEnv, nil
+	}
+
 	ssmClient, err := newClient(ctx)
 	if err != nil {
 		log.Errorf("failed to create SSM client: %s", err)
