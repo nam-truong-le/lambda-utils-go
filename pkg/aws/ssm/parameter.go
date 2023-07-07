@@ -107,6 +107,13 @@ func getParameterFromSSM(ctx context.Context, stage, name string, decryption boo
 
 	ssmKey := fmt.Sprintf("/%s/%s%s", app, stage, name)
 	log.Infof("get [%s] variable", ssmKey)
+
+	directEnv, ok := os.LookupEnv(ssmKey)
+	if ok {
+		log.Infof("Found [%s] in direct env", ssmKey)
+		return directEnv, nil
+	}
+
 	ssmClient, err := newClient(ctx)
 	if err != nil {
 		log.Errorf("failed to create SSM client: %s", err)

@@ -43,3 +43,14 @@ func TestGetParameter_FromEnv(t *testing.T) {
 	assert.NoError(t, err)
 	assert.Equal(t, "param-value", result)
 }
+
+func TestGetParameter_FromDirectEnv(t *testing.T) {
+	err := os.Setenv("APP", "admin")
+	assert.NoError(t, err)
+	ctx := context.WithValue(context.Background(), mycontext.FieldStage, "dev")
+	err = os.Setenv("/admin/dev/a/b/c", "test")
+	assert.NoError(t, err)
+	result, err := ssm.GetParameter(ctx, "/a/b/c", false)
+	assert.NoError(t, err)
+	assert.Equal(t, "test", result)
+}
