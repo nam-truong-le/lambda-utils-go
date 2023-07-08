@@ -8,7 +8,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 
-	"github.com/nam-truong-le/lambda-utils-go/v4/pkg/aws/ssm"
+	"github.com/nam-truong-le/lambda-utils-go/v4/pkg/aws/secretsmanager"
 	"github.com/nam-truong-le/lambda-utils-go/v4/pkg/logger"
 )
 
@@ -23,15 +23,15 @@ func newClient(ctx context.Context) (*mongo.Client, error) {
 
 	initClient.Do(func() {
 		log.Infof("Init mongodb client")
-		mongoHost, err := ssm.GetParameter(ctx, "/mongo/host", false)
+		mongoHost, err := secretsmanager.GetParameter(ctx, "/mongo/host")
 		if err != nil {
 			return
 		}
-		mongoUsername, err := ssm.GetParameter(ctx, "/mongo/username", false)
+		mongoUsername, err := secretsmanager.GetParameter(ctx, "/mongo/username")
 		if err != nil {
 			return
 		}
-		mongoPassword, err := ssm.GetParameter(ctx, "/mongo/password", true)
+		mongoPassword, err := secretsmanager.GetParameter(ctx, "/mongo/password")
 		if err != nil {
 			return
 		}

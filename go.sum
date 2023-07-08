@@ -67,10 +67,6 @@ github.com/jmespath/go-jmespath/internal/testify v1.5.1/go.mod h1:L3OGu8Wl2/fWfC
 github.com/klauspost/compress v1.13.6/go.mod h1:/3/Vjq9QcHkK5uEr5lBEmyoZ1iFhe47etQ6QUkpK6sk=
 github.com/klauspost/compress v1.15.13 h1:NFn1Wr8cfnenSJSA46lLq4wHCcBzKTSjnBIexDMMOV0=
 github.com/klauspost/compress v1.15.13/go.mod h1:QPwzmACJjUTFsnSHH934V6woptycfrDDJnH7hvFVbGM=
-github.com/mailjet/mailjet-apiv3-go/v3 v3.2.0 h1:/gjowTurgK4iqLzVAQmjtcldyaW6tbJNA4PzZsuj2Ks=
-github.com/mailjet/mailjet-apiv3-go/v3 v3.2.0/go.mod h1:Nw3mVzRxV0CVDTlzaRcADGKt4PMNbT7gYIyEtjMrVIM=
-github.com/mailjet/mailjet-apiv3-go/v4 v4.0.1 h1:VwdxYT1lPOIBZolqNtN6GcpdOySgHhCFQNsbN5P7uh8=
-github.com/mailjet/mailjet-apiv3-go/v4 v4.0.1/go.mod h1:2SU3t6eh/uK6BSeBmdhpIUau99L4iPlIfbx4o4pAUQs=
 github.com/montanaflynn/stats v0.0.0-20171201202039-1bf9dbcd8cbe/go.mod h1:wL8QJuTMNUDYhXwkmfOly8iTdp5TEcJFWZD2D7SIkUc=
 github.com/montanaflynn/stats v0.6.6 h1:Duep6KMIDpY4Yo11iFsvyqJDyfzLF9+sndUKT+v64GQ=
 github.com/montanaflynn/stats v0.6.6/go.mod h1:etXPPgVO6n31NxCd9KQUMvCM+ve0ruNzt6R8Bnaayow=
