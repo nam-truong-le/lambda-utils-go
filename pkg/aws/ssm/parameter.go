@@ -2,7 +2,6 @@ package ssm
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"os"
 
@@ -11,8 +10,8 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/ssm/types"
 	"github.com/pkg/errors"
 
-	mycontext "github.com/nam-truong-le/lambda-utils-go/v3/pkg/context"
-	"github.com/nam-truong-le/lambda-utils-go/v3/pkg/logger"
+	mycontext "github.com/nam-truong-le/lambda-utils-go/v4/pkg/context"
+	"github.com/nam-truong-le/lambda-utils-go/v4/pkg/logger"
 )
 
 type cacheKey struct {
@@ -80,13 +79,6 @@ func GetParameter(ctx context.Context, name string, decryption bool) (string, er
 		return "", fmt.Errorf("missing stage in context")
 	}
 
-	envParam, ok := getParameterFromEnv(ctx, stage, name)
-	if ok {
-		log.Infof("Parameter [%s] found in env", name)
-		return envParam, nil
-	}
-
-	log.Infof("Paramter [%s] not found in env, will try to read from SSM", name)
 	return getParameterFromSSM(ctx, stage, name, decryption)
 }
 
@@ -107,13 +99,6 @@ func getParameterFromSSM(ctx context.Context, stage, name string, decryption boo
 
 	ssmKey := fmt.Sprintf("/%s/%s%s", app, stage, name)
 	log.Infof("get [%s] variable", ssmKey)
-
-	directEnv, ok := os.LookupEnv(ssmKey)
-	if ok {
-		log.Infof("Found [%s] in direct env", ssmKey)
-		return directEnv, nil
-	}
-
 	ssmClient, err := newClient(ctx)
 	if err != nil {
 		log.Errorf("failed to create SSM client: %s", err)
@@ -130,39 +115,4 @@ func getParameterFromSSM(ctx context.Context, stage, name string, decryption boo
 	}
 	log.Infof("found in SSM")
 	return *getParameterOutput.Parameter.Value, nil
-}
-
-type envStageParams map[string]string
-type envAppParams map[string]envStageParams
-
-func getParameterFromEnv(ctx context.Context, stage, name string) (string, bool) {
-	log := logger.FromContext(ctx)
-	log.Infof("Get parameter [%s] [%s] from env", stage, name)
-
-	paramsString, ok := os.LookupEnv("APP_PARAMS")
-	if !ok {
-		log.Infof("APP_PARAMS env not found")
-		return "", false
-	}
-
-	appParams := make(envAppParams, 0)
-	err := json.Unmarshal([]byte(paramsString), &appParams)
-	if err != nil {
-		log.Errorf("Failed to parse param json: %s", err)
-		return "", false
-	}
-
-	stageParams, ok := appParams[stage]
-	if !ok {
-		log.Infof("Stage not found: %s", stage)
-		return "", false
-	}
-
-	param, ok := stageParams[name]
-	if !ok {
-		log.Infof("Param not found: %s", name)
-		return "", false
-	}
-
-	return param, true
 }

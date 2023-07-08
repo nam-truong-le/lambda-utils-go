@@ -6,7 +6,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/textract"
 	"github.com/aws/aws-sdk-go-v2/service/textract/types"
 
-	"github.com/nam-truong-le/lambda-utils-go/v3/pkg/logger"
+	"github.com/nam-truong-le/lambda-utils-go/v4/pkg/logger"
 )
 
 func ReadText(ctx context.Context, obj *types.S3Object) ([]string, error) {

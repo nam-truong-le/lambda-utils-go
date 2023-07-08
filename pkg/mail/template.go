@@ -9,7 +9,7 @@ import (
 	"text/template"
 	"time"
 
-	"github.com/nam-truong-le/lambda-utils-go/v3/pkg/logger"
+	"github.com/nam-truong-le/lambda-utils-go/v4/pkg/logger"
 )
 
 type renderData struct {
