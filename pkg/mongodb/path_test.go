@@ -7,8 +7,8 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 
-	"github.com/nam-truong-le/lambda-utils-go/v3/pkg/mongodb"
-	"github.com/nam-truong-le/lambda-utils-go/v3/pkg/rest"
+	"github.com/nam-truong-le/lambda-utils-go/v4/pkg/mongodb"
+	"github.com/nam-truong-le/lambda-utils-go/v4/pkg/rest"
 )
 
 func TestUpdateFromPatch(t *testing.T) {

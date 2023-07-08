@@ -9,8 +9,8 @@ import (
 	"github.com/google/uuid"
 	"github.com/samber/lo"
 
-	mycontext "github.com/nam-truong-le/lambda-utils-go/v3/pkg/context"
-	"github.com/nam-truong-le/lambda-utils-go/v3/pkg/logger"
+	mycontext "github.com/nam-truong-le/lambda-utils-go/v4/pkg/context"
+	"github.com/nam-truong-le/lambda-utils-go/v4/pkg/logger"
 )
 
 // Response returns response with json body
