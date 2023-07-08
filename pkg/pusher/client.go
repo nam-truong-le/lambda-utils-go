@@ -7,7 +7,7 @@ import (
 	"github.com/pkg/errors"
 	"github.com/pusher/pusher-http-go/v5"
 
-	"github.com/nam-truong-le/lambda-utils-go/v4/pkg/aws/ssm"
+	"github.com/nam-truong-le/lambda-utils-go/v4/pkg/aws/secretsmanager"
 	"github.com/nam-truong-le/lambda-utils-go/v4/pkg/logger"
 )
 
@@ -26,17 +26,17 @@ func NewClient(ctx context.Context) (*pusher.Client, error) {
 	var err error
 	initClient.Do(func() {
 		log.Infof("init pusher")
-		app, e := ssm.GetParameter(ctx, "/pusher/app", false)
+		app, e := secretsmanager.GetParameter(ctx, "/pusher/app")
 		if e != nil {
 			err = e
 			return
 		}
-		key, e := ssm.GetParameter(ctx, "/pusher/key", false)
+		key, e := secretsmanager.GetParameter(ctx, "/pusher/key")
 		if e != nil {
 			err = e
 			return
 		}
-		secret, e := ssm.GetParameter(ctx, "/pusher/secret", true)
+		secret, e := secretsmanager.GetParameter(ctx, "/pusher/secret")
 		if e != nil {
 			err = e
 			return
