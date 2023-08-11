@@ -13,7 +13,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/sns v1.21.2
 	github.com/aws/aws-sdk-go-v2/service/sqs v1.24.2
 	github.com/aws/aws-sdk-go-v2/service/ssm v1.37.2
-	github.com/aws/aws-sdk-go-v2/service/textract v1.22.1
+	github.com/aws/aws-sdk-go-v2/service/textract v1.22.2
 	github.com/google/uuid v1.3.0
 	github.com/pkg/errors v0.9.1
 	github.com/pusher/pusher-http-go/v5 v5.1.1
