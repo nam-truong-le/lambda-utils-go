@@ -8,7 +8,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/config v1.18.34
 	github.com/aws/aws-sdk-go-v2/service/kms v1.24.3
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.38.3
-	github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.21.0
+	github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.21.1
 	github.com/aws/aws-sdk-go-v2/service/ses v1.16.3
 	github.com/aws/aws-sdk-go-v2/service/sns v1.21.2
 	github.com/aws/aws-sdk-go-v2/service/sqs v1.24.2
