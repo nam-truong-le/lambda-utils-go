@@ -33,8 +33,8 @@ github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.9.34 h1:JwvXk+1eP
 github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.9.34/go.mod h1:ytsF+t+FApY2lFnN51fJKPhH6ICKOPXKEcwwgmJEdWI=
 github.com/aws/aws-sdk-go-v2/service/internal/s3shared v1.15.2 h1:M5vGdcDO+jUGWu7d4BXwcLRXp3UikWXAiCfQI20rqFQ=
 github.com/aws/aws-sdk-go-v2/service/internal/s3shared v1.15.2/go.mod h1:bC2B9AS4ygwMNrefck3XeD6YwXeplWhY6Z2UtlGjv1s=
-github.com/aws/aws-sdk-go-v2/service/kms v1.24.3 h1:N2fqUgPte/d79PwmdW8ulqqwmSd80SkS3kATCDJWTUk=
-github.com/aws/aws-sdk-go-v2/service/kms v1.24.3/go.mod h1:7qBt6HWbxf0+cENXelntj1ZgmBZvM7ABGqgZzcC7F0I=
+github.com/aws/aws-sdk-go-v2/service/kms v1.24.4 h1:eC0eZ20GVHsZHS0RYm8EthuVKsYk1eqckq61+jQ+k6A=
+github.com/aws/aws-sdk-go-v2/service/kms v1.24.4/go.mod h1:6ZjdRmC/J4661HHlbzGusAabG1D3ASrsbP8lZ1ughTQ=
 github.com/aws/aws-sdk-go-v2/service/s3 v1.38.3 h1:yWclTL4cyiqLBWSjxDJ1tjiIzP4x4Kp85aAUtKSbtwA=
 github.com/aws/aws-sdk-go-v2/service/s3 v1.38.3/go.mod h1:yER+u7+gwH6dXy5xRTC2OfoHpYY1BFRiS0SF5iamO6M=
 github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.21.1 h1:JBrOoTb1gfm4EhlwbMigvLRgOHgouSyQFRbOVQWn3wU=
