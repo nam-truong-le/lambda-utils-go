@@ -10,7 +10,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.40.1
 	github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.21.4
 	github.com/aws/aws-sdk-go-v2/service/ses v1.16.9
-	github.com/aws/aws-sdk-go-v2/service/sns v1.22.0
+	github.com/aws/aws-sdk-go-v2/service/sns v1.22.1
 	github.com/aws/aws-sdk-go-v2/service/sqs v1.24.5
 	github.com/aws/aws-sdk-go-v2/service/ssm v1.38.0
 	github.com/aws/aws-sdk-go-v2/service/textract v1.24.0
