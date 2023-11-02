@@ -6,7 +6,7 @@ require (
 	github.com/aws/aws-lambda-go v1.41.0
 	github.com/aws/aws-sdk-go-v2 v1.22.1
 	github.com/aws/aws-sdk-go-v2/config v1.21.0
-	github.com/aws/aws-sdk-go-v2/service/kms v1.25.0
+	github.com/aws/aws-sdk-go-v2/service/kms v1.26.0
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.41.0
 	github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.22.0
 	github.com/aws/aws-sdk-go-v2/service/ses v1.17.0
