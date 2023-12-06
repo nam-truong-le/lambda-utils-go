@@ -5,15 +5,15 @@ go 1.19
 require (
 	github.com/aws/aws-lambda-go v1.41.0
 	github.com/aws/aws-sdk-go-v2 v1.23.5
-	github.com/aws/aws-sdk-go-v2/config v1.25.11
-	github.com/aws/aws-sdk-go-v2/service/kms v1.27.2
-	github.com/aws/aws-sdk-go-v2/service/s3 v1.47.2
-	github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.25.2
-	github.com/aws/aws-sdk-go-v2/service/ses v1.19.2
-	github.com/aws/aws-sdk-go-v2/service/sns v1.26.2
-	github.com/aws/aws-sdk-go-v2/service/sqs v1.29.2
-	github.com/aws/aws-sdk-go-v2/service/ssm v1.44.2
-	github.com/aws/aws-sdk-go-v2/service/textract v1.28.2
+	github.com/aws/aws-sdk-go-v2/config v1.25.12
+	github.com/aws/aws-sdk-go-v2/service/kms v1.27.3
+	github.com/aws/aws-sdk-go-v2/service/s3 v1.47.3
+	github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.25.3
+	github.com/aws/aws-sdk-go-v2/service/ses v1.19.3
+	github.com/aws/aws-sdk-go-v2/service/sns v1.26.3
+	github.com/aws/aws-sdk-go-v2/service/sqs v1.29.3
+	github.com/aws/aws-sdk-go-v2/service/ssm v1.44.3
+	github.com/aws/aws-sdk-go-v2/service/textract v1.28.3
 	github.com/google/uuid v1.4.0
 	github.com/pkg/errors v0.9.1
 	github.com/pusher/pusher-http-go/v5 v5.1.1
@@ -26,7 +26,7 @@ require (
 
 require (
 	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.5.3 // indirect
-	github.com/aws/aws-sdk-go-v2/credentials v1.16.9 // indirect
+	github.com/aws/aws-sdk-go-v2/credentials v1.16.10 // indirect
 	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.14.9 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/configsources v1.2.8 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.5.8 // indirect
@@ -36,9 +36,9 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/internal/checksum v1.2.8 // indirect
 	github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.10.8 // indirect
 	github.com/aws/aws-sdk-go-v2/service/internal/s3shared v1.16.8 // indirect
-	github.com/aws/aws-sdk-go-v2/service/sso v1.18.2 // indirect
-	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.21.2 // indirect
-	github.com/aws/aws-sdk-go-v2/service/sts v1.26.2 // indirect
+	github.com/aws/aws-sdk-go-v2/service/sso v1.18.3 // indirect
+	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.21.3 // indirect
+	github.com/aws/aws-sdk-go-v2/service/sts v1.26.3 // indirect
 	github.com/aws/smithy-go v1.18.1 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
