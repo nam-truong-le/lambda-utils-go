@@ -46,8 +46,8 @@ github.com/aws/aws-sdk-go-v2/service/ssooidc v1.28.3 h1:2YCmIXv3tmiItw0LlYf6v7gE
 github.com/aws/aws-sdk-go-v2/service/ssooidc v1.28.3/go.mod h1:u19stRyNPxGhj6dRm+Cdgu6N75qnbW7+QN0q0dsAk58=
 github.com/aws/aws-sdk-go-v2/service/sts v1.32.3 h1:wVnQ6tigGsRqSWDEEyH6lSAJ9OyFUsSnbaUWChuSGzs=
 github.com/aws/aws-sdk-go-v2/service/sts v1.32.3/go.mod h1:VZa9yTFyj4o10YGsmDO4gbQJUvvhY72fhumT8W4LqsE=
-github.com/aws/aws-sdk-go-v2/service/textract v1.34.3 h1:HFF0I9MLlIxKV3m3r3AFOdnEtv/UyW74dWZANw2tCSc=
-github.com/aws/aws-sdk-go-v2/service/textract v1.34.3/go.mod h1:lO0tlyhaPk44Ij9KF+6+BigagksrqzJ6dhYktR7Zl9U=
+github.com/aws/aws-sdk-go-v2/service/textract v1.34.4 h1:Ka7mO3D/PhQC6fkET/U8YS+mvz3l8daIvAiUHCdg4vU=
+github.com/aws/aws-sdk-go-v2/service/textract v1.34.4/go.mod h1:lO0tlyhaPk44Ij9KF+6+BigagksrqzJ6dhYktR7Zl9U=
 github.com/aws/smithy-go v1.22.0 h1:uunKnWlcoL3zO7q+gG2Pk53joueEOsnNB28QdMsmiMM=
 github.com/aws/smithy-go v1.22.0/go.mod h1:irrKGvNn1InZwb2d7fkIRNucdfwR8R+Ts3wxYa/cJHg=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
