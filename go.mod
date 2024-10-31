@@ -15,7 +15,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/sns v1.33.3
 	github.com/aws/aws-sdk-go-v2/service/sqs v1.36.3
 	github.com/aws/aws-sdk-go-v2/service/ssm v1.55.3
-	github.com/aws/aws-sdk-go-v2/service/textract v1.34.4
+	github.com/aws/aws-sdk-go-v2/service/textract v1.34.5
 	github.com/google/uuid v1.6.0
 	github.com/pkg/errors v0.9.1
 	github.com/pusher/pusher-http-go/v5 v5.1.1
