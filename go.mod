@@ -13,7 +13,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.34.8
 	github.com/aws/aws-sdk-go-v2/service/ses v1.29.2
 	github.com/aws/aws-sdk-go-v2/service/sns v1.33.8
-	github.com/aws/aws-sdk-go-v2/service/sqs v1.37.3
+	github.com/aws/aws-sdk-go-v2/service/sqs v1.37.4
 	github.com/aws/aws-sdk-go-v2/service/ssm v1.56.2
 	github.com/aws/aws-sdk-go-v2/service/textract v1.34.10
 	github.com/google/uuid v1.6.0
