@@ -8,12 +8,12 @@ require (
 	github.com/aws/aws-lambda-go v1.49.0
 	github.com/aws/aws-sdk-go-v2 v1.36.6
 	github.com/aws/aws-sdk-go-v2/config v1.29.18
-	github.com/aws/aws-sdk-go-v2/service/kms v1.41.3
+	github.com/aws/aws-sdk-go-v2/service/kms v1.41.4
 	github.com/aws/aws-sdk-go-v2/service/s3 v1.84.1
 	github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.35.8
 	github.com/aws/aws-sdk-go-v2/service/ses v1.30.6
 	github.com/aws/aws-sdk-go-v2/service/sns v1.34.8
-	github.com/aws/aws-sdk-go-v2/service/sqs v1.38.9
+	github.com/aws/aws-sdk-go-v2/service/sqs v1.38.10
 	github.com/aws/aws-sdk-go-v2/service/ssm v1.60.2
 	github.com/aws/aws-sdk-go-v2/service/textract v1.36.1
 	github.com/google/uuid v1.6.0
