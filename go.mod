@@ -14,7 +14,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/ses v1.34.9
 	github.com/aws/aws-sdk-go-v2/service/sns v1.39.3
 	github.com/aws/aws-sdk-go-v2/service/sqs v1.42.13
-	github.com/aws/aws-sdk-go-v2/service/ssm v1.66.4
+	github.com/aws/aws-sdk-go-v2/service/ssm v1.67.0
 	github.com/aws/aws-sdk-go-v2/service/textract v1.40.9
 	github.com/google/uuid v1.6.0
 	github.com/pkg/errors v0.9.1
