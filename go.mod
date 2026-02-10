@@ -2,7 +2,7 @@ module github.com/nam-truong-le/lambda-utils-go/v4
 
 go 1.23
 
-toolchain go1.25.7
+toolchain go1.26.0
 
 require (
 	github.com/aws/aws-lambda-go v1.52.0
